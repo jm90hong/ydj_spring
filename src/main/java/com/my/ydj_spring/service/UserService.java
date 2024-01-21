@@ -13,6 +13,10 @@ public class UserService {
 	UserDao userDao;
 	
 	
+	public User findByName(String name) {
+		return userDao.findByName(name);
+	}
+	
 	public int save(User user) {
 		return userDao.save(user);
 	}

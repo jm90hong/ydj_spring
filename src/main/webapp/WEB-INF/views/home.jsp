@@ -26,7 +26,6 @@ crossorigin="anonymous">
 
 <body>
 	
-	24년 1월 16일 수업!
 	
 	
 	${nick}

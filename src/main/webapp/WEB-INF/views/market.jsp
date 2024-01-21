@@ -27,15 +27,24 @@ crossorigin="anonymous">
 <body>
 	
 	
-	<div style="width:800px;height:100vh;background: #f2f2f2;margin:0 auto;">
+	<div style="padding:16px;width:800px;height:100vh;background: #f2f2f2;margin:0 auto;">
+		
+		<section>
+			<h6 style="font-weight:700;">회원 관리</h6>
+			<div style="display:flex;align-items: center;">
+				<input id="name" placeholder="이름"/>
+				<input id="point" type="number" placeholder="포인트"/>
+				<button id="save-user-btn" type="button" class="btn btn-primary btn-sm">회원등록</button>
+			</div>
+		</section>
+		
 	</div>
 	
 </body>
 
 
 
-<script src="./js/home.js">
-</script>
+<script src="./js/market.js"></script>
 
 </html>
 

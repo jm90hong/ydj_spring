@@ -14,6 +14,10 @@ public class UserDao {
 	SqlSession s;
 	
 	
+	public User findByName(String name) {
+		return s.selectOne("user.findByName",name);
+	}
+	
 	public int save(User user) {
 		return s.insert("user.save",user);
 	}

@@ -2,6 +2,12 @@
 <mapper namespace="user">	
 	 
 	 
+	 
+	 <select id="findByName" parameterType="String" resultType="User">
+	 	SELECT * FROM user
+	 	WHERE name=#{name}
+	 </select>
+	 
 	 <insert id="save" parameterType="User">
 	 	INSERT INTO user
 	 	(
