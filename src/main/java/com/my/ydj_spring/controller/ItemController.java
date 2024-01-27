@@ -1,7 +1,6 @@
 package com.my.ydj_spring.controller;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,26 +11,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.my.ydj_spring.service.UserService;
-import com.my.ydj_spring.vo.User;
+import com.my.ydj_spring.service.ItemService;
+import com.my.ydj_spring.vo.Item;
 
 @Controller
 @CrossOrigin
-@RequestMapping(value="user")
-public class UserController {
+@RequestMapping(value="item")
+public class ItemController {
 
 	
 	@Autowired
-	UserService userService;
-	
+	ItemService itemService;
 	
 	@GetMapping("all")
 	@ResponseBody
-	public List<User> save() {
+	public List<Item> all(){
 		
-		List<User> list = userService.findAll();
-		
-		return list;
+			
+		return itemService.findAll();
 	}
 	
 	
@@ -39,26 +36,36 @@ public class UserController {
 	@ResponseBody
 	public String save(
 				@RequestParam(value="name") String name,
-				@RequestParam(value="point") int point
+				@RequestParam(value="user_idx") int user_idx,
+				@RequestParam(value="price") int price,
+				@RequestParam(value="count") int count
 			) {
 		
-		String uuid = UUID.randomUUID().toString();
 		
-		User user = new User();
-		user.setUser_uuid(uuid);
-		user.setName(name);
-		user.setPoint(point);
+		Item item = new Item();
+		item.setName(name);
+		item.setUser_idx(user_idx);
+		item.setPrice(price);
+		item.setCount(count);
 		
-		User result = userService.findByName(name);
+	
+		itemService.save(item);
 		
-		if(result == null) {
-			//가입진행(이름 중복 안됨) 
-			userService.save(user);
-			return "ok";
-		}else {
-			//가입 불가능
-			return "name";
-		}
+		return "ok";
+	}
+	
+	
+	@PostMapping("delete")
+	@ResponseBody
+	public String delete(
+				@RequestParam(value="item_idx") int item_idx
+				
+			) {
+		
+		
+		itemService.delete(item_idx);
+		
+		return "ok";
 		
 		
 		

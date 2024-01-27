@@ -1,5 +1,7 @@
 package com.my.ydj_spring.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,11 @@ public class UserService {
 	UserDao userDao;
 	
 	
+	
+	public List<User> findAll(){
+		return userDao.findAll();
+	}
+	
 	public User findByName(String name) {
 		return userDao.findByName(name);
 	}
@@ -20,6 +27,5 @@ public class UserService {
 	public int save(User user) {
 		return userDao.save(user);
 	}
-	
 	
 }

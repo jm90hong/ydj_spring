@@ -1,0 +1,40 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="item">	
+	 
+	 
+	 
+	 
+	 <select id="findAll" resultType="Item">
+	 	SELECT *,u.name AS u_name FROM item AS i
+	 	INNER JOIN user as u
+	 	ON u.user_idx = i.user_idx
+	 	ORDER BY i.item_idx DESC
+	 </select>
+	 
+	 <delete id="delete" parameterType="Integer">
+	 	DELETE FROM item
+	 	WHERE item_idx=#{item_idx}
+	 </delete>
+	 
+	 
+	 <insert id="save" parameterType="Item">
+	 	INSERT INTO item
+	 	(
+	 		user_idx,
+	 		name,
+	 		price,
+	 		count,
+	 		created_date
+ 		)
+	 	VALUES
+	 	(
+	 		#{user_idx},
+	 		#{name},
+	 		#{price},
+	 		#{count},
+	 		SYSDATE()
+	 	)
+	 	
+	 </insert>		
+	
+</mapper>

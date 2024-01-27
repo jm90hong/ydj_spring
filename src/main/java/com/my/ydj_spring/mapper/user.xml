@@ -3,6 +3,11 @@
 	 
 	 
 	 
+	 <select id="findAll" resultType="User">
+	 	SELECT * FROM user
+	 	ORDER BY user_idx DESC
+	 </select>
+	 
 	 <select id="findByName" parameterType="String" resultType="User">
 	 	SELECT * FROM user
 	 	WHERE name=#{name}
